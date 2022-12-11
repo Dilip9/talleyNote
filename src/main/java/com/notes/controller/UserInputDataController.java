@@ -1,13 +1,24 @@
 package com.notes.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.notes.service.RationDataService;
+import com.notes.domain.RationData;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("/api/v1/")
+@CrossOrigin("*")
 public class UserInputDataController {
 
-    @RequestMapping("/")
-    public String show(){
-        return "Hello World !!";
+    private RationDataService rationDataService;
+    @PostMapping("/insertData")
+    public RationData insertRation(@RequestBody RationData rationData){
+       return rationDataService.save(rationData);
     }
 }
+
+//
+//    @Value("${custom.value}")
+//
+//    private String customVal;

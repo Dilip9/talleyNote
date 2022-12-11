@@ -5,12 +5,16 @@ spring:
     url: jdbc:postgresql://localhost:5432/myDB
     username: postgres
     password: Di?Li95#
-# JPA properties
-jpa:
-  hibernate:
-    ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
-  show-sql: true
-  database: postgresql
-  database-platform: org.hibernate.dialect.PostgreSQLDialect
-  open-in-view: false
-  generate-ddl: true
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+
